@@ -1,0 +1,7 @@
+{
+    "tasks": [
+    { "id": "1", "content": "Clean the room", "status": "todo" },
+    { "id": "2", "content": "Make the week's food", "status": "inprogress" },
+    { "id": "3", "content": "Learn to code", "status": "done" }
+    ]
+}

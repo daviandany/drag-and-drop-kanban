@@ -1,0 +1,25 @@
+{
+  "name": "drag-and-drop",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/daviandany/drag-and-drop-kanban.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/daviandany/drag-and-drop-kanban/issues"
+  },
+  "homepage": "https://github.com/daviandany/drag-and-drop-kanban#readme",
+  "dependencies": {
+    "express": "^5.2.1",
+    "json-server": "^1.0.0-beta.5"
+  }
+}
