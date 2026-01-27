@@ -5,10 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Drag and Drop</title>
     <link rel="stylesheet" href="styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </head>
 <body>
     
     <div class="container">
+
+        <!-- change background -->
+    <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Change Background Color
+        </button>
+    <ul class="dropdown-menu">
+    <li class="redBtn">Red</a></li>
+    <li class="yellowBtn">Yellow</a></li>
+    <li class="blueBtn">Blue</a></li>
+    <li class="yellowBtn">Yellow</a></li>
+    <li class="originalBtn">Original color</a></li>
+    </ul>
+    </div>
 
         <h1>Kanban</h1>
 
@@ -39,5 +55,6 @@
     
 
     <script src="index.js" charset="utf-8"> </script>
+    <script src="backgroundfeat.js" charset="utf-8"></script>
 </body>
 </html>
