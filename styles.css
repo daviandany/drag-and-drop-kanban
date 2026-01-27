@@ -5,7 +5,7 @@
 }
 
 body{
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: 'family-name', sans-serif;
     background-color: antiquewhite;
     display:flex;
     justify-content: center;
@@ -23,6 +23,7 @@ h1{
     color:darkcyan;
     margin-bottom: 20px;
     font-size:2rem;
+    user-select:none;
 }
 
 .board{
@@ -49,6 +50,23 @@ margin-bottom: 30px;
 color:darkslategray;
 font-size:1.6rem;
 cursor:default;
+user-select:none;
+}
+
+.contentList.over{
+    background-color:beige;
+    box-shadow: 0 0 10px 5px wheat;
+    transition: all 0.3s;
+}
+
+.card.inprogress{
+    background-color:rgb(230, 194, 127);
+    transition: all 0.5;
+}
+
+.card.done{
+    background-color:lightgreen;
+    transition: all 0.5s;
 }
 
 .card{
