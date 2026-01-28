@@ -109,6 +109,20 @@ user-select:none;
     background-color:blue !important;
 }
 
+footer{
+    margin-top:100px;
+}
+
+footer a{
+    text-decoration: none;
+    color: blueviolet;
+    font-size: 1.3rem;
+}
+
+footer a:hover{
+    transition: all 0.3s;
+    color:cadetblue;
+}
 
 @media (max-width:768px){
 
