@@ -110,7 +110,7 @@ user-select:none;
 }
 
 footer{
-    margin-top:100px;
+    margin-top:50px;
 }
 
 footer a{
@@ -135,4 +135,46 @@ footer a:hover{
         width:80%;
         margin-bottom:20px;
     }
+}
+.btn-primary{
+    background-color: paleturquoise;
+    color: purple;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-size: 1.2rem;
+    transition: background 0.3s;
+    font-weight: bold;
+    cursor: pointer;
+    gap: 8px;
+}
+
+.btn-primary:hover{
+    background-color: blueviolet;
+    transform: translateY(-1);
+}
+
+.modal-overlay {
+    position: fixed;  
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.5); 
+    display: flex;    
+    align-items: center; 
+    justify-content: center;
+    z-index: 1000;     
+}
+
+.modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.hidden {
+    display: none !important;
 }

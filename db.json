@@ -1,7 +1,64 @@
 {
-    "tasks": [
-    { "id": "1", "content": "Clean the room", "status": "todo" },
-    { "id": "2", "content": "Make the week's food", "status": "inprogress" },
-    { "id": "3", "content": "Learn to code", "status": "done" }
-    ]
+  "tasks": [
+    {
+      "id": "1",
+      "title": "Clean the room",
+      "status": "doing"
+    },
+    {
+      "id": "2",
+      "title": "Make the week's food",
+      "status": "todo"
+    },
+    {
+      "id": "3",
+      "title": "Learn to code",
+      "status": "done"
+    },
+    {
+      "id": "1769873098824",
+      "title": "fdsfd",
+      "status": "doing"
+    },
+    {
+      "id": "1769873116572",
+      "title": "free code camp",
+      "status": "done"
+    },
+    {
+      "id": "1769873144153",
+      "title": "ee",
+      "status": "todo"
+    },
+    {
+      "id": "1769873239756",
+      "title": "cf",
+      "status": "todo"
+    },
+    {
+      "id": "1769873474177",
+      "title": "gvjhbj",
+      "status": "todo"
+    },
+    {
+      "id": "1769873488739",
+      "title": "davia",
+      "status": "todo"
+    },
+    {
+      "id": "1769873937862",
+      "title": "hnm]",
+      "status": "todo"
+    },
+    {
+      "id": "1769874287267",
+      "title": "dfa",
+      "status": "todo"
+    },
+    {
+      "id": "1769874308302",
+      "title": "tfhgjy",
+      "status": "todo"
+    }
+  ]
 }

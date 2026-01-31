@@ -1,6 +1,4 @@
-const currentYear = new Date();
-const thisYear = currentYear.getFullYear();
+const currentYear = new Date().getFullYear();
+const taggingPYear = document.getElementById("year");
 
-document.getElementById(nowYear).innerHTML(thisYear);
-
-alert("dadf");
+taggingPYear.innerHTML = currentYear;
