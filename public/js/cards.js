@@ -1,3 +1,9 @@
+import { createClient } from 'https://esm.sh/@supabase/supabase-js@2'
+
+const supabaseUrl = 'https://izyrbosdmlxqobqwunpn.supabase.co';
+const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Iml6eXJib3NkbWx4cW9icXd1bnBuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njk4NzIyMjYsImV4cCI6MjA4NTQ0ODIyNn0._LrajI_OxnVpZnjkNjMTZKr0Ka41M9MG-znMc7XuZYM';
+const supabase = createClient(supabaseUrl, supabaseKey);
+
 const modal = document.getElementById('modal-overlay');
 const btnNewTask = document.getElementById('btn-new-task');
 const btnCancell = document.getElementById('btn-cancell');
@@ -11,98 +17,163 @@ const columns = {
 };
 
 function toggleModal(){
+    if (!modal) return;
     modal.classList.toggle('hidden');
-
     if(!modal.classList.contains('hidden')){
         inputTitle.value = '';
         inputTitle.focus();
     }
 }
 
-btnNewTask.addEventListener("click", toggleModal)
-btnCancell.addEventListener("click", toggleModal)
+if(btnNewTask) btnNewTask.addEventListener("click", toggleModal);
+if(btnCancell) btnCancell.addEventListener("click", toggleModal);
 
-modal.addEventListener("click", (e) => {
-    if(modal === e.target){ toggleModal() }
-});
+if(modal){
+    modal.addEventListener("click", (e) => {
+        if(modal === e.target){ toggleModal() }
+    });
+}
 
 async function loadTasks(){
     try{
-        const awnser = await fetch('/api/tasks');
-        const tasks = await awnser.json();
+        let{ data: tasks, error} = await supabase
+        .from('tasks')
+        .select("*")
+        .order('created_at', { ascending: true });
+
+        if(error) throw error;
 
         Object.values(columns).forEach(col => {
-            const oldCards = col.querySelectorAll(".card");
-            oldCards.forEach(card => card.remove());
+            const oldCards = col.querySelectorAll('.card');
+            oldCards.forEach(card => card.remove())
         });
 
         tasks.forEach(task => {
             createCardOnScreen(task);
+        })
 
-        });
-    }   catch(error) {
-        console.log('error loading tasks: ', error)
+    } catch(error){
+        console.log("error when loading", error)
     }
 };
 
 function createCardOnScreen(task){
-
     const card = document.createElement('div');
     card.className = 'card';
     card.id = `card-${task.id}`;
-    card.innerHTML = task.title;
+
+    card.innerText = task.title || task.titulo || "no title";
     card.setAttribute('data-id', task.id);
     card.draggable = true;
 
+    if(task.status === 'doing') card.classList.add('inprogress');
+    if(task.status === 'done') card.classList.add('done');
+
     settingDragAndDrop(card);
 
-    const destinyColumn = columns[task.status] || columns['todo'];
+    const status = task.status || 'todo';
+    const destinyColumn = columns[status] || columns['todo'];
     destinyColumn.appendChild(card);
 }
 
-async function saveTask(){
+async function saveTask(e) { 
+    if(e) e.preventDefault(); 
+
     const title = inputTitle.value;
-    if(!title) return alert('please write a title');
+    if(!title) return alert('Please, write a title');
     
+    btnSave.innerText = "Saving...";
+    btnSave.disabled = true;
+
     try {
-        const response = await fetch('/api/tasks', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ title })
-        });
-        
-        if (response.ok) {
-            const task = await response.json();
-            createCardOnScreen(task);
+        const { data, error } = await supabase
+            .from('tasks') 
+            .insert([ { title: title, status: 'todo' } ])
+            .select();
+
+        if (error) throw error;
+
+        if(data && data.length > 0){
+            createCardOnScreen(data[0]);
             toggleModal();
         }
+
     } catch (error) {
-        console.log('Error saving task:', error);
-        alert('Error saving task');
+        console.error('ERROR: ', error);
+        alert('Error on Database: ' + (error.message || error.error_description));
+    } finally {
+        btnSave.innerText = "Save Task";
+        btnSave.disabled = false;
     }
 }
+
+if(btnSave) btnSave.addEventListener("click", saveTask);
+
+let draggedCard = null; 
 
 function settingDragAndDrop(card){
-    card.addEventListener('dragstart', dragStart);
-    card.addEventListener('dragend', dragEnd);
+    if(!card) return;
+
+    card.addEventListener('dragstart', () => {
+        draggedCard = card;
+        card.classList.add('dragging');
+        setTimeout(() => (card.style.display = 'none'), 0);
+    });
+
+    card.addEventListener('dragend', () => {
+        draggedCard = null;
+        card.classList.remove('dragging');
+        card.style.display = 'block';
+        
+        updateTaskStatus(card);
+    });
 }
 
-function dragStart(e) {
-    e.dataTransfer.setData('text/plain', this.id);
-}
+const allColumns = document.querySelectorAll('.contentList');
 
-function dragEnd() {
-    console.log('Drag Ended');
-}
-
-btnSave.addEventListener('click', saveTask);
-inputTitle.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter') {
+allColumns.forEach(column => {
+    column.addEventListener('dragover', (e) => {
         e.preventDefault();
-        saveTask();
-    }
+        column.classList.add('over');
+    });
+
+    column.addEventListener('dragleave', () => {
+        column.classList.remove('over');
+    });
+
+    column.addEventListener('drop', (e) => {
+        e.preventDefault();
+        column.classList.remove('over');
+        
+        if(draggedCard){
+            column.appendChild(draggedCard);
+            draggedCard.classList.remove("done", "inprogress");
+
+            if(column.id === "list2") { 
+                draggedCard.classList.add("inprogress");
+            } 
+            else if(column.id === "list3") { 
+                draggedCard.classList.add("done");
+            }
+        }
+    });
 });
+
+async function updateTaskStatus(card){
+    const parentId = card.parentElement.id;
+    let newStatus = 'todo'
+
+    if(parentId === 'list2') newStatus = 'doing';
+    if(parentId === 'list3') newStatus = 'done';
+
+    const id = card.getAttribute('data-id')
+
+    const { error } = await supabase
+    .from('tasks')
+    .update({status: newStatus})
+    .eq('id', id);
+
+    if(error) { console.log('error updating status: ', error) }
+}
 
 loadTasks();
