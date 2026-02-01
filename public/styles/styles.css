@@ -30,28 +30,55 @@ h1{
 .board{
     display:flex;
     justify-content: space-around;
-    align-items: flex-start;
+    align-items: stretch;
     width:100%;
     margin: 0 auto;
     max-width:1200px;
     gap:20px;
+    /* keep board within viewport so footer remains visible */
+    max-height: calc(100vh - 180px);
+    overflow-y: auto;
+    padding-bottom: 8px;
 }
 
 .contentList{
     background-color:aqua;
     width:30%;
-    min-height:400px;
+    /* columns take equal available height and scroll internally */
+    flex: 1 1 0;
+    min-height: 220px;
+    max-height: 40vh;
     padding:1rem;
     border-radius: 8px;
     box-shadow: 0 4px 8px burlywood;
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
 }
 
 .contentList h2{
-margin-bottom: 30px;
-color:darkslategray;
-font-size:1.6rem;
-cursor:default;
-user-select:none;
+    margin: 8px 0;
+    color: darkslategray;
+    font-size: 1rem;
+    cursor: default;
+    user-select: none;
+    flex-shrink: 0;
+    position: sticky;
+    top: 8px;
+    z-index: 12;
+    display: inline-block;
+    background: #e6ffff;
+    padding: 8px 14px;
+    border-radius: 999px; /* pill/circle look */
+    box-shadow: 0 9px 22px rgba(0,0,0,0.12);
+    border: 1px solid rgba(0,0,0,0.06);
+}
+
+.contentList > .cards-container {
+    overflow-y: auto;
+    overflow-x: hidden;
+    flex: 1;
 }
 
 .contentList.over{
@@ -86,6 +113,24 @@ user-select:none;
     box-shadow: 0 4px 6px black;
 }
 
+.contentList::-webkit-scrollbar {
+    width: 8px;
+}
+
+.contentList::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+}
+
+.contentList::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+}
+
+.contentList::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.5);
+}
+
 .dropdown{
     display:flex;
     align-items: end;
@@ -94,19 +139,134 @@ user-select:none;
     margin: 0 auto;
 }
 
+.dropdown-menu li {
+    cursor: pointer;
+    padding: 0;
+}
+
+.redBtn, .yellowBtn, .blueBtn, .originalBtn {
+    display: block;
+    width: 100%;
+    padding: 10px 16px;
+    text-align: left;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+    position: relative;
+}
+
+.redBtn {
+    color: #dc3545;
+    font-weight: 500;
+}
+
+.redBtn:hover {
+    background-color: rgba(220, 53, 69, 0.1);
+    color: #bb2d3b;
+    padding-left: 20px;
+}
+
+.redBtn:active {
+    background-color: rgba(220, 53, 69, 0.2);
+    transform: scale(0.98);
+}
+
+.yellowBtn {
+    color: #ffc107;
+    font-weight: 500;
+}
+
+.yellowBtn:hover {
+    background-color: rgba(255, 193, 7, 0.1);
+    color: #ffb81c;
+    padding-left: 20px;
+}
+
+.yellowBtn:active {
+    background-color: rgba(255, 193, 7, 0.2);
+    transform: scale(0.98);
+}
+
+.blueBtn {
+    color: #0d6efd;
+    font-weight: 500;
+}
+
+.blueBtn:hover {
+    background-color: rgba(13, 110, 253, 0.1);
+    color: #0a58ca;
+    padding-left: 20px;
+}
+
+.blueBtn:active {
+    background-color: rgba(13, 110, 253, 0.2);
+    transform: scale(0.98);
+}
+
+.originalBtn {
+    color: #6c757d;
+    font-weight: 500;
+    border-top: 1px solid #e9ecef;
+    margin-top: 5px;
+}
+
+.originalBtn:hover {
+    background-color: rgba(108, 117, 125, 0.1);
+    color: #495057;
+    padding-left: 20px;
+}
+
+.originalBtn:active {
+    background-color: rgba(108, 117, 125, 0.2);
+    transform: scale(0.98);
+}
+
 .redButton{
     transition: all 0.8s;
     background-color:red !important;
+    cursor:pointer;
 }
 
 .yellowButton{
     transition: all 0.8s;
     background-color:yellow !important;
+    cursor: pointer;
 }
 
 .blueButton{
     transition: all 0.8s;
     background-color:blue !important;
+    cursor: pointer;
+}
+
+footer{
+    margin-top:50px;
+}
+
+.dropdown .btn-secondary {
+    background-color: #6c757d;
+    border: 2px solid #495057;
+    font-weight: 600;
+    padding: 10px 20px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.dropdown .btn-secondary:hover {
+    background-color: #5a6268;
+    border-color: #343a40;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.dropdown .btn-secondary:active,
+.dropdown .btn-secondary[aria-expanded="true"] {
+    background-color: #495057;
+    border-color: #343a40;
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
 }
 
 footer{
