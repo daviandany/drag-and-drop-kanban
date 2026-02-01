@@ -4,7 +4,7 @@ const blueBack = document.querySelector(".blueBtn")
 const blackButton = document.querySelector(".blackBtn")
 const originalColor = document.querySelector(".originalBtn")
 const body = document.querySelector("body")
-const colorArray = ["redButton", "yellowButton", "blueButton","blackButton"];
+const colorArray = ["redButton", "yellowButton", "blueButton","blackButton", "h1-white"];
 
 const removeColor = () => {
     body.classList.remove(...colorArray); }

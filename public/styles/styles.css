@@ -25,6 +25,7 @@ h1{
     margin-bottom: 20px;
     font-size:2rem;
     user-select:none;
+    font-family: "Momo Trust Display", sans-serif;
 }
 
 .board{
@@ -71,7 +72,7 @@ h1{
     background: #e6ffff;
     padding: 8px 14px;
     border-radius: 999px; /* pill/circle look */
-    box-shadow: 0 9px 22px rgba(0,0,0,0.12);
+    box-shadow: 0 5px 22px rgba(0,0,0,5.12);
     border: 1px solid rgba(0,0,0,0.06);
 }
 
