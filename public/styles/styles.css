@@ -205,6 +205,24 @@ h1{
     transform: scale(0.98);
 }
 
+.blackBtn{
+    color: #000000;
+    font-weight: 500;
+    border-top: 1px solid #e9ecef;
+    margin-top: 5px;
+    transition: all 0.3s ease;
+}
+
+.blackBtn:hover{
+    background-color: rgba(0, 0, 0, 0.1);
+    padding-left: 20px;
+    
+}
+
+.blackBtn:active{
+    transform: scale(0.98);
+}
+
 .originalBtn {
     color: #6c757d;
     font-weight: 500;
@@ -239,6 +257,17 @@ h1{
     transition: all 0.8s;
     background-color:blue !important;
     cursor: pointer;
+}
+
+.blackButton{
+    transition: all 0.8;
+    background-color: black !important;
+    cursor: pointer;
+}
+
+.h1-white{
+    transition: all 0.8;
+    color: white;
 }
 
 footer{

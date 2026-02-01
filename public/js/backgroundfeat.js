@@ -1,9 +1,10 @@
 const redBack = document.querySelector(".redBtn")
 const yellowBack = document.querySelector(".yellowBtn")
 const blueBack = document.querySelector(".blueBtn")
+const blackButton = document.querySelector(".blackBtn")
 const originalColor = document.querySelector(".originalBtn")
 const body = document.querySelector("body")
-const colorArray = ["redButton", "yellowButton", "blueButton"];
+const colorArray = ["redButton", "yellowButton", "blueButton","blackButton"];
 
 const removeColor = () => {
     body.classList.remove(...colorArray); }
@@ -23,8 +24,12 @@ blueBack.addEventListener("click", () => {
         body.classList.add("blueButton");
 })
 
-originalColor.addEventListener("click", ()=> {
+originalColor.addEventListener("click", () => {
     originalColor = removeColor();
 } )
 
-//add black background
+blackButton.addEventListener("click", () => {
+        removeColor();
+        body.classList.add("blackButton", "h1-white")
+})
+

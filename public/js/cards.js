@@ -176,4 +176,6 @@ async function updateTaskStatus(card){
     if(error) { console.log('error updating status: ', error) }
 }
 
+//delete button
+
 loadTasks();
