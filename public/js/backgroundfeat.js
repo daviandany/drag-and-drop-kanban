@@ -26,3 +26,5 @@ blueBack.addEventListener("click", () => {
 originalColor.addEventListener("click", ()=> {
     originalColor = removeColor();
 } )
+
+//add black background
