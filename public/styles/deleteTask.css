@@ -1,0 +1,18 @@
+.delete-task{
+    background: transparent;
+    border: none;
+    color:red;
+    cursor: pointer;
+    padding: 0;
+    float: right;
+    font-size: 1.2rem;
+    margin-left: 10px;
+    transition: transform 0.2s;
+}
+
+.btn-delete:hover{
+    transform: scale(1.2);
+    color: rgb(72, 2, 2)
+}
+
+/* set trash image and move to the top right */

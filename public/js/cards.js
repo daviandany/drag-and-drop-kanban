@@ -66,6 +66,18 @@ function createCardOnScreen(task){
     card.setAttribute('data-id', task.id);
     card.draggable = true;
 
+    const deleteBtn = document.createElement('button');
+    deleteBtn.innerHTML = '&text';
+    deleteBtn.className = 'btn-delete'
+    deleteBtn.title = 'Delete'
+ 
+    deleteBtn.addEventListener('click', (e) =>{
+        e.stopPropagation();
+        deleteTaskFromSupabase(task.id, card);
+    });
+
+    card.appendChild(deleteBtn)
+
     if(task.status === 'doing') card.classList.add('inprogress');
     if(task.status === 'done') card.classList.add('done');
 
@@ -176,6 +188,41 @@ async function updateTaskStatus(card){
     if(error) { console.log('error updating status: ', error) }
 }
 
-//delete button
+async function deleteTaskFromSupabase(id, cardElement){
+    const confirmDelete = confirm('Are you sure you want delete this taks?')
+    
+    if(!confirmDelete) return;
+
+   try { 
+    const { error } = await supabase
+    .from('tasks')
+    .delete()
+    .eq('id', id);
+
+    if(error) throw error;
+
+    cardElement.style.maxHeight = cardElement.scrollHeight + 'px';
+    cardElement.style.transition = "all 0.5 ease";
+    cardElement.style.overflow = "hidden";
+
+    setTimeout(() => {
+                    //hiding animation
+            cardElement.style.opacity = "0";       
+            cardElement.style.maxHeight = "0";    
+            cardElement.style.marginTop = "0";     
+            cardElement.style.marginBottom = "0";
+            cardElement.style.paddingTop = "0";    
+            cardElement.style.paddingBottom = "0";
+            cardElement.style.border = "none";     
+        }, 10);
+
+   } catch (error){
+    console.log('Error when deleting', error);
+    alert('Error when deleting', error.message);
+   }
+}
+
+//enter to save
+//edit button
 
 loadTasks();
