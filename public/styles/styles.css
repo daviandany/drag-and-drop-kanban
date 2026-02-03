@@ -1,64 +1,63 @@
-*{
-    padding:0;
-    margin:0;
+* {
+    padding: 0;
+    margin: 0;
     box-sizing: border-box;
 }
 
-body{
+body {
     transition: all 0.8s;
     font-family: 'family-name', sans-serif;
     background-color: antiquewhite;
-    display:flex;
+    display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
 }
 
-.container{
-    text-align:center;
-    width:100%;
+.container {
+    text-align: center;
+    width: 100%;
     padding: 1.2rem;
 }
 
-h1{
-    color:darkcyan;
+h1 {
+    color: darkcyan;
     margin-bottom: 20px;
-    font-size:2rem;
-    user-select:none;
+    font-size: 2rem;
+    user-select: none;
     font-family: "Momo Trust Display", sans-serif;
 }
 
-.board{
-    display:flex;
+.board {
+    display: flex;
     justify-content: space-around;
     align-items: stretch;
-    width:100%;
+    width: 100%;
     margin: 0 auto;
-    max-width:1200px;
-    gap:20px;
-    /* keep board within viewport so footer remains visible */
+    max-width: 1200px;
+    gap: 20px;
     max-height: calc(100vh - 180px);
     overflow-y: auto;
     padding-bottom: 8px;
 }
 
-.contentList{
-    background-color:aqua;
-    width:30%;
-    /* columns take equal available height and scroll internally */
+.contentList {
+    background-color: aqua;
+    width: 30%;
     flex: 1 1 0;
     min-height: 220px;
     max-height: 40vh;
-    padding:1rem;
+    padding: 1rem;
     border-radius: 8px;
     box-shadow: 0 4px 8px burlywood;
     overflow-y: auto;
     overflow-x: hidden;
     display: flex;
     flex-direction: column;
+    align-items: stretch;
 }
 
-.contentList h2{
+.contentList h2 {
     margin: 8px 0;
     color: darkslategray;
     font-size: 1rem;
@@ -71,48 +70,52 @@ h1{
     display: inline-block;
     background: #e6ffff;
     padding: 8px 14px;
-    border-radius: 999px; /* pill/circle look */
-    box-shadow: 0 5px 22px rgba(0,0,0,5.12);
-    border: 1px solid rgba(0,0,0,0.06);
+    border-radius: 999px;
+    box-shadow: 0 5px 22px rgba(0, 0, 0, 5.12);
+    border: 1px solid rgba(0, 0, 0, 0.06);
 }
 
-.contentList > .cards-container {
+.contentList>.cards-container {
     overflow-y: auto;
     overflow-x: hidden;
     flex: 1;
 }
 
-.contentList.over{
-    background-color:beige;
+.contentList.over {
+    background-color: beige;
     box-shadow: 0 0 10px 5px wheat;
     transition: all 0.3s;
 }
 
-.card.inprogress{
-    background-color:rgb(230, 194, 127);
-    transition: all 0.5;
-}
-
-.card.done{
-    background-color:lightgreen;
+.card.inprogress {
+    background-color: rgb(230, 194, 127);
     transition: all 0.5s;
 }
 
-.card{
-    display:flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color:honeydew;
-    padding:1rem;
-    margin-bottom:10px;
-    border-radius:9px;
-    cursor:grab;
-    box-shadow: 0 2px 3px black;
-    transition: all 0.2s;
+.card.done {
+    background-color: lightgreen;
+    transition: all 0.5s;
 }
 
-.card:active{
-    cursor:grabbing;
+.card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: honeydew;
+    padding: 1rem;
+    padding-right: 30px;
+    margin-bottom: 10px;
+    border-radius: 9px;
+    cursor: grab;
+    box-shadow: 0 2px 3px black;
+    transition: all 0.2s;
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.card:active {
+    cursor: grabbing;
     transform: scale(1.05);
     box-shadow: 0 4px 6px black;
 }
@@ -135,11 +138,11 @@ h1{
     background: rgba(0, 0, 0, 0.5);
 }
 
-.dropdown{
-    display:flex;
+.dropdown {
+    display: flex;
     align-items: end;
     justify-content: right;
-    width:100%;
+    width: 100%;
     margin: 0 auto;
 }
 
@@ -148,7 +151,10 @@ h1{
     padding: 0;
 }
 
-.redBtn, .yellowBtn, .blueBtn, .originalBtn {
+.redBtn,
+.yellowBtn,
+.blueBtn,
+.originalBtn {
     display: block;
     width: 100%;
     padding: 10px 16px;
@@ -209,7 +215,7 @@ h1{
     transform: scale(0.98);
 }
 
-.blackBtn{
+.blackBtn {
     color: #000000;
     font-weight: 500;
     border-top: 1px solid #e9ecef;
@@ -217,13 +223,13 @@ h1{
     transition: all 0.3s ease;
 }
 
-.blackBtn:hover{
+.blackBtn:hover {
     background-color: rgba(0, 0, 0, 0.1);
     padding-left: 20px;
-    
+
 }
 
-.blackBtn:active{
+.blackBtn:active {
     transform: scale(0.98);
 }
 
@@ -245,37 +251,37 @@ h1{
     transform: scale(0.98);
 }
 
-.redButton{
+.redButton {
     transition: all 0.8s;
-    background-color:red !important;
-    cursor:pointer;
-}
-
-.yellowButton{
-    transition: all 0.8s;
-    background-color:yellow !important;
+    background-color: red !important;
     cursor: pointer;
 }
 
-.blueButton{
+.yellowButton {
     transition: all 0.8s;
-    background-color:blue !important;
+    background-color: yellow !important;
     cursor: pointer;
 }
 
-.blackButton{
+.blueButton {
+    transition: all 0.8s;
+    background-color: blue !important;
+    cursor: pointer;
+}
+
+.blackButton {
     transition: all 0.8;
     background-color: black !important;
     cursor: pointer;
 }
 
-.h1-white{
+.h1-white {
     transition: all 0.8;
     color: white;
 }
 
-footer{
-    margin-top:50px;
+footer {
+    margin-top: 50px;
 }
 
 .dropdown .btn-secondary {
@@ -302,34 +308,35 @@ footer{
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
 }
 
-footer{
-    margin-top:50px;
+footer {
+    margin-top: 50px;
 }
 
-footer a{
+footer a {
     text-decoration: none;
     color: blueviolet;
     font-size: 1.3rem;
 }
 
-footer a:hover{
+footer a:hover {
     transition: all 0.3s;
-    color:cadetblue;
+    color: cadetblue;
 }
 
-@media (max-width:768px){
+@media (max-width:768px) {
 
-    .board{
+    .board {
         flex-direction: column;
         align-items: center;
     }
 
-    .contentList{
-        width:80%;
-        margin-bottom:20px;
+    .contentList {
+        width: 80%;
+        margin-bottom: 20px;
     }
 }
-.btn-primary{
+
+.btn-primary {
     background-color: paleturquoise;
     color: purple;
     border: none;
@@ -342,20 +349,22 @@ footer a:hover{
     gap: 8px;
 }
 
-.btn-primary:hover{
+.btn-primary:hover {
     background-color: blueviolet;
     transform: translateY(-1);
 }
 
 .modal-overlay {
-    position: fixed;  
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: rgba(0,0,0,0.5); 
-    display: flex;    
-    align-items: center; 
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
     justify-content: center;
-    z-index: 1000;     
+    z-index: 1000;
 }
 
 .modal-content {

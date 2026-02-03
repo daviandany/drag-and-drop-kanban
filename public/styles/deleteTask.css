@@ -1,18 +1,21 @@
-.delete-task{
+.btn-delete{
+    position: absolute;
+    top: 5px;
+    right: 5px;
     background: transparent;
     border: none;
-    color:red;
     cursor: pointer;
     padding: 0;
-    float: right;
-    font-size: 1.2rem;
-    margin-left: 10px;
     transition: transform 0.2s;
+    background-image: url(../assets/trash.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 1.2rem;
+    height: 1.2rem;
 }
 
 .btn-delete:hover{
     transform: scale(1.2);
-    color: rgb(72, 2, 2)
+    color: rgb(72, 2, 2);
+    background-image: url(../assets/trash-fill.svg);
 }
-
-/* set trash image and move to the top right */
