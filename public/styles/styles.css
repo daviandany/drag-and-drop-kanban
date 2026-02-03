@@ -7,7 +7,7 @@
 body {
     transition: all 0.8s;
     font-family: 'family-name', sans-serif;
-    background-color: antiquewhite;
+    background-color: rgba(21, 27, 151, 0.713) !important;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -376,6 +376,7 @@ footer a:hover {
     flex-direction: column;
     gap: 10px;
 }
+
 
 .hidden {
     display: none !important;
