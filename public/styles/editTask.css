@@ -96,7 +96,11 @@
 }
 
 .btn-edit {
-    background-image: url(../assets/pencil.svg);
+    background-image: url(../assets/edit-3-svgrepo-com.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: transparent;
     position: absolute;
     top: 5px;
     left: 1px;
@@ -108,5 +112,7 @@
 
 .btn-edit:hover {
     transform: scale(1.2);
-    background-image: url(../assets/pencil-fill.svg);
+    background-image: url(../assets/edit-3-svgrepo-com.svg);
+    color:#666;
+    transition: all 0.2s ease;
 }
