@@ -280,6 +280,11 @@ h1 {
     color: white;
 }
 
+.footer-black a{
+    transition: all 0.8;
+    color: rgb(0, 0, 0);
+}
+
 .dropdown .btn-secondary {
     background-color: #6c757d;
     border: 2px solid #495057;
