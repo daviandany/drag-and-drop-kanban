@@ -20,7 +20,6 @@
   "homepage": "https://github.com/daviandany/drag-and-drop-kanban#readme",
   "dependencies": {
     "@openrouter/sdk": "^0.5.1",
-    "@supabase/supabase-js": "^2.93.3",
     "dotenv": "^17.2.3",
     "express": "^5.2.1",
     "json-server": "^1.0.0-beta.5"
