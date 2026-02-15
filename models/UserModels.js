@@ -1,5 +1,5 @@
 import { DataTypes } from 'sequelize';
-import bcrypt from bcrypt;
+import bcrypt from 'bcrypt';
 import sequelize from '../config/database';
 
 const User = sequelize.define('User', {
@@ -12,23 +12,23 @@ const User = sequelize.define('User', {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
-         notEmpty: { msg: 'Nome não pode ser vazio'},
-         len: { args: [2, 100], msg: 'Nome deve ter entre 2 a 100 caracteres' }   
+         notEmpty: { msg: 'Name can not be avoid'},
+         len: { args: [2, 100], msg: 'Name must has between 2 until 100 characters' }   
         },
     },
     email: {
         type: DataTypes.STRING,
         allowNull: false,
-        unique: { msg: 'Este e-mail já está cadastrado' },
+        unique: { msg: 'This E-mail is already registered' },
         validate: { 
-            isEmail:{ msg: 'E-mail inválido' }
+            isEmail:{ msg: 'Invalid E-mail' }
         },
     },
     password: {
         type: DataTypes.STRING,
-        allowNulll: false,
+        allowNull: false,
         validate: {
-            len: { args: [2, 200], msg: 'Senha deve ter pelo menos 6 caracteres' }
+            len: { args: [2, 200], msg: 'Password must be 6 characters at least' }
         },
     }, 
 }, {
@@ -39,7 +39,7 @@ const User = sequelize.define('User', {
         beforeCreate: async (user) => {
             user.password = await bcrypt.hash(user.password, 10)
         },
-        befereUpdate: async (user) => {
+        beforeUpdate: async (user) => {
             if(user.changed('password')) {
                 user.password = await bcrypt.hash(user.password, 10);
             }
@@ -57,4 +57,4 @@ User.prototype.toSafeJSON = function () {
     return user;
 }
 
-module.exports = User;
+export default User;
