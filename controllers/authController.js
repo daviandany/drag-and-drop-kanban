@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken'
-import User from '../models'
+import { User } from '../models/foreignKeyModels.js'
 
 const generateToken = (userId) => {
     return jwt.sign(
@@ -46,7 +46,7 @@ const register = async (req, res) => {
                 return res.status(400).json({ error: 'E-mail e senha são obrigatórios' });
             }
 
-            const user = User.findOne({ where: { email }});
+            const user = await User.findOne({ where: { email }});
 
             if (!user) {
                 res.status(401).json({ error: 'E-mail ou senha incorretos' });
@@ -74,4 +74,4 @@ const register = async (req, res) => {
         res.status(200).json({ user: req.user.toSafeJSON() });
     };
 
-    module.exports = { register, login, me }
+    export { register, login, me }

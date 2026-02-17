@@ -1,8 +1,8 @@
-import Router from 'express';
-import Task from 'models';
-import auth from './auth';
+import { Router } from 'express';
+import { Task } from '../models/foreignKeyModels.js';
+import auth from './authRoutes.js';
 
-const router = router();
+const router = Router();
 
 router.use(auth);
 
@@ -75,4 +75,4 @@ router.post('/', async (req, res) => {
         }
     });
 
-module.exports = router;
+export default  router;

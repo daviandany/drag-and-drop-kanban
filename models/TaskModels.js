@@ -32,7 +32,7 @@ const Task = sequelize.define('Task', {
     },
 }, {
     tablename: 'tasks',
-    timestamps: 'true',
+    timestamps: true,
 });
 
-module.exports = 'Tasks'
+export default Task

@@ -2,9 +2,9 @@ import 'dotenv/config';
 import express from "express";
 import path from "path";
 import { fileURLToPath } from "url";
-import { syncDatabase } from './models/foreignKey.models';
-import authRoutes from './routes/auth';
-import taskRoutes from './routes/tasks'
+import { syncDatabase } from './models/foreignKeyModels.js';
+import authRoutes from './routes/authRoutes.js';
+import taskRoutes from './routes/tasksRoutes.js'
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);

@@ -3,13 +3,13 @@ import User from './UserModels.js';
 import Task from './TaskModels.js';
 
 User.hasMany(Task, {
-    foreignkey: 'userId',
+    foreignKey: 'userId',
     as: 'tasks',
     onDelete: 'CASCADE',
 });
 
 Task.belongsTo(User, {
-    foreignkey: 'key',
+    foreignKey: 'userId',
     as: 'user',
 });
 
@@ -26,4 +26,4 @@ const syncDatabase = async () => {
     }
 };
 
-module.exports = { sequelize, User, Task, syncDatabase }
+export { sequelize, User, Task, syncDatabase };
